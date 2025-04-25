@@ -1,0 +1,773 @@
+# sd-public-school
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SD Public School Shikhshan Sasthan</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #1a5276;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            width: 60px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            color: #1a5276;
+        }
+        
+        .logo span {
+            font-size: 16px;
+            color: #666;
+            display: block;
+        }
+        
+        nav ul {
+            display: flex;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            background-color: #1a5276;
+            color: #fff;
+        }
+        
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #1a5276;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/api/placeholder/1200/600') center/cover no-repeat;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            margin-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #1a5276;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #154360;
+            transform: translateY(-3px);
+        }
+        
+        /* About Section */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-size: 32px;
+            color: #1a5276;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: #1a5276;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Features Section */
+        .features {
+            background-color: #f9f9f9;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            color: #1a5276;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: #1a5276;
+        }
+        
+        /* Academics Section */
+        .academics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .academic-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .academic-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .academic-content {
+            padding: 20px;
+        }
+        
+        .academic-content h3 {
+            color: #1a5276;
+            margin-bottom: 10px;
+        }
+        
+        /* Announcements Section */
+        .announcements {
+            background-color: #f0f7fa;
+        }
+        
+        .announcement-list {
+            background: #fff;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .announcement-item {
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+        
+        .announcement-item:last-child {
+            border-bottom: none;
+        }
+        
+        .announcement-date {
+            display: block;
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 5px;
+        }
+        
+        .announcement-title {
+            font-weight: 600;
+            color: #1a5276;
+            margin-bottom: 5px;
+            display: block;
+        }
+        
+        /* Contact Section */
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-info h3 {
+            color: #1a5276;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        textarea.form-control {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a5276;
+            color: #fff;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: #fff;
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section ul li a {
+            color: #ddd;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-section ul li a:hover {
+            color: #fff;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: #fff;
+            color: #1a5276;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+        
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .mobile-nav-toggle {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #fff;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.active {
+                display: block;
+            }
+            
+            nav ul li {
+                margin: 0;
+                margin-bottom: 15px;
+            }
+            
+            .hero {
+                height: 400px;
+            }
+            
+            .hero h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="/api/placeholder/60/60" alt="SD Public School Logo">
+                <div>
+                    <h1>SD Public School</h1>
+                    <span>Shikhshan Sasthan</span>
+                </div>
+            </div>
+            <button class="mobile-nav-toggle">☰</button>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#academics">Academics</a></li>
+                    <li><a href="#admissions">Admissions</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>Welcome to SD Public School</h2>
+            <p>Nurturing young minds with quality education and values for a brighter future.</p>
+            <a href="#admissions" class="btn">Apply Now</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Us</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>SD Public School Shikhshan Sasthan is a premier educational institution committed to providing quality education with emphasis on academic excellence, character development, and holistic growth.</p>
+                    <p>Founded in 2005, our school has grown into a respected institution known for its innovative teaching methods, dedicated faculty, and state-of-the-art infrastructure.</p>
+                    <p>Our vision is to nurture responsible global citizens who excel not only in academics but also contribute positively to society through their knowledge, skills, and values.</p>
+                </div>
+                <div class="about-image">
+                    <img src="/api/placeholder/500/300" alt="School building">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose Us</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎓</div>
+                    <h3>Academic Excellence</h3>
+                    <p>Comprehensive curriculum designed to foster critical thinking and academic growth.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍🏫</div>
+                    <h3>Experienced Faculty</h3>
+                    <p>Dedicated teachers who are experts in their fields and passionate about education.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏛️</div>
+                    <h3>Modern Infrastructure</h3>
+                    <p>State-of-the-art facilities including smart classrooms, labs, and sports complexes.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌱</div>
+                    <h3>Holistic Development</h3>
+                    <p>Focus on all-round development through academics, sports, arts, and cultural activities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academics Section -->
+    <section class="section" id="academics">
+        <div class="container">
+            <div class="section-header">
+                <h2>Academics</h2>
+            </div>
+            <div class="academics-grid">
+                <div class="academic-card">
+                    <img src="/api/placeholder/400/200" alt="Primary Education">
+                    <div class="academic-content">
+                        <h3>Primary Education (Grades 1-5)</h3>
+                        <p>Our primary education program focuses on building strong foundations in core subjects while nurturing creativity and curiosity in young minds.</p>
+                    </div>
+                </div>
+                <div class="academic-card">
+                    <img src="/api/placeholder/400/200" alt="Middle School">
+                    <div class="academic-content">
+                        <h3>Middle School (Grades 6-8)</h3>
+                        <p>The middle school curriculum is designed to deepen understanding of subjects and develop critical thinking and problem-solving skills.</p>
+                    </div>
+                </div>
+                <div class="academic-card">
+                    <img src="/api/placeholder/400/200" alt="Secondary Education">
+                    <div class="academic-content">
+                        <h3>Secondary Education (Grades 9-12)</h3>
+                        <p>Our secondary education prepares students for board examinations and future academic pursuits with specialized focus on chosen streams.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admissions Section -->
+    <section class="section" id="admissions">
+        <div class="container">
+            <div class="section-header">
+                <h2>Admissions</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Admission Process</h3>
+                    <p>SD Public School welcomes applications from prospective students for the academic year 2025-26. Our admission process is designed to be transparent and fair.</p>
+                    <h4>Eligibility Criteria:</h4>
+                    <ul style="list-style-type: disc; margin-left: 20px; margin-bottom: 15px;">
+                        <li>Primary School: Minimum 5 years of age as of March 31, 2025</li>
+                        <li>Transfer Admissions: Submission of previous academic records</li>
+                    </ul>
+                    <h4>Required Documents:</h4>
+                    <ul style="list-style-type: disc; margin-left: 20px; margin-bottom: 15px;">
+                        <li>Birth Certificate</li>
+                        <li>Previous School Records (for transfer students)</li>
+                        <li>Passport-sized photographs</li>
+                        <li>Address Proof</li>
+                    </ul>
+                    <p>Download the application form below or visit our school office to obtain a physical copy.</p>
+                    <a href="#" class="btn" style="margin-top: 15px;">Download Application Form</a>
+                </div>
+                <div class="about-image">
+                    <img src="/api/placeholder/500/300" alt="Students in classroom">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Announcements Section -->
+    <section class="section announcements">
+        <div class="container">
+            <div class="section-header">
+                <h2>Latest Announcements</h2>
+            </div>
+            <div class="announcement-list">
+                <div class="announcement-item">
+                    <span class="announcement-date">April 20, 2025</span>
+                    <a href="#" class="announcement-title">Admissions Open for Academic Year 2025-26</a>
+                    <p>Applications are now being accepted for all grades. Limited seats available.</p>
+                </div>
+                <div class="announcement-item">
+                    <span class="announcement-date">April 15, 2025</span>
+                    <a href="#" class="announcement-title">Annual Sports Day Scheduled for May 10</a>
+                    <p>All students are encouraged to participate in various sports events.</p>
+                </div>
+                <div class="announcement-item">
+                    <span class="announcement-date">April 10, 2025</span>
+                    <a href="#" class="announcement-title">Parent-Teacher Meeting</a>
+                    <p>PTM for all classes will be held on April 28, 2025, from 9:00 AM to 1:00 PM.</p>
+                </div>
+                <div class="announcement-item">
+                    <span class="announcement-date">April 5, 2025</span>
+                    <a href="#" class="announcement-title">Science Exhibition Results Announced</a>
+                    <p>Congratulations to all winners and participants of the Annual Science Exhibition.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2>Gallery</h2>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px;">
+                <img src="/api/placeholder/250/180" alt="School Event" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px;">
+                <img src="/api/placeholder/250/180" alt="Classroom" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px;">
+                <img src="/api/placeholder/250/180" alt="Sports Day" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px;">
+                <img src="/api/placeholder/250/180" alt="Science Lab" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px;">
+                <img src="/api/placeholder/250/180" alt="Art Class" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px;">
+                <img src="/api/placeholder/250/180" alt="Library" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px;">
+                <img src="/api/placeholder/250/180" alt="Annual Day" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px;">
+                <img src="/api/placeholder/250/180" alt="Computer Lab" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contact Us</h2>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <p><strong>Address:</strong> 123 Education Road, Knowledge City, 123456</p>
+                    <p><strong>Phone:</strong> +91 98765 43210</p>
+                    <p><strong>Email:</strong> info@sdpublicschool.edu</p>
+                    <p><strong>Office Hours:</strong> Monday to Friday, 8:00 AM to 4:00 PM</p>
+                    
+                    <h3 style="margin-top: 30px;">Location</h3>
+                    <div style="margin-top: 15px; background: #eee; height: 250px; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
+                        <p>Map Placeholder</p>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Send us a Message</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>SD Public School</h3>
+                    <p>Nurturing excellence, building character, and shaping the future through quality education.</p>
+                    <div class="social-links">
+                        <a href="#">F</a>
+                        <a href="#">T</a>
+                        <a href="#">I</a>
+                        <a href="#">Y</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#academics">Academics</a></li>
+                        <li><a href="#admissions">Admissions</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">School Calendar</a></li>
+                        <li><a href="#">Student Portal</a></li>
+                        <li><a href="#">Parent Portal</a></li>
+                        <li><a href="#">Career Opportunities</a></li>
+                        <li><a href="#">Alumni Network</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for updates on school events and activities.</p>
+                    <form style="margin-top: 15px;">
+                        <input type="email" placeholder="Your Email" class="form-control" style="margin-bottom: 10px;">
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SD Public School Shikhshan Sasthan. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile navigation toggle
+        document.querySelector('.mobile-nav-toggle').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('active');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (document.querySelector('nav ul').classList.contains('active')) {
+                    document.querySelector('nav ul').classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
